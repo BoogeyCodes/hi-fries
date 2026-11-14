@@ -6,7 +6,9 @@ export const brand = {
   uanRaw: '03111115454',
   whatsapp: '923165555454', // 0316 555 54 54 -> international
   whatsappDisplay: '0316 555 54 54',
-  address: '86 Tulip Commercial, Parkview City, Lahore',
+  address: '86-Tulip Commercial, Park View City, Lahore',
+  website: 'www.hifries.pk',
+  social: '@hifries.official',
 }
 
 export const fmtPrice = (n) => 'Rs. ' + Number(n).toLocaleString('en-PK')
@@ -59,11 +61,25 @@ export const deals = [
 // ===== ADD-ONS (attach to any item) =====
 export const addonOptions = [
   { id: 'make-meal', name: 'Make it a Meal (Drink + Fries)', price: 250 },
-  { id: 'extra-cheese', name: 'Extra Cheese Slice', price: 50 },
-  { id: 'extra-sauce', name: 'Extra Sauce', price: 50 },
-  { id: 'add-fries', name: 'Add Plain Fries', price: 150 },
+  { id: 'dip', name: 'Dip Sauce', price: 70 },
+  { id: 'extra-topping', name: 'Extra Topping (Cheese / Chicken)', price: 100 },
+  { id: 'add-fries', name: 'Add Plain Fries', price: 230 },
   { id: 'add-drink', name: 'Add Cold Drink', price: 120 },
 ]
+
+// pizza size pricing presets
+const PIZZA_CLASSIC = [
+  { label: 'S', price: 550 },
+  { label: 'M', price: 1050 },
+  { label: 'L', price: 1550 },
+  { label: 'XL', price: 1850 },
+]
+const PIZZA_PREMIUM = [
+  { label: 'R', price: 1250 },
+  { label: 'L', price: 2100 },
+  { label: 'XL', price: 2600 },
+]
+const PIZZA_SIGNATURE = [{ label: 'L', price: 2200 }]
 
 // ===== MENU CATEGORIES =====
 export const categories = [
@@ -88,13 +104,43 @@ export const categories = [
   },
   {
     id: 'pizza',
-    name: 'Pizza Point',
+    name: 'Pizza Paradise',
     emoji: '🍕',
     banner: img('pizza.jpg'),
-    pill: 'New',
-    items: [],
-    comingSoon:
-      'Pizza menu coming soon — small pizzas (Classic Range) feature in our Two Hot Two Handle & Lunch deals.',
+    wide: true,
+    pill: 'S · M · L · XL',
+    groups: [
+      {
+        title: 'Classics — S 550 · M 1050 · L 1550 · XL 1850',
+        items: [
+          { name: 'Tikka', desc: 'Red pizza sauce, onion, ch. tikka, cheese', variants: PIZZA_CLASSIC },
+          { name: 'Veggie Lover', desc: 'Cheesy pizza topped with fresh colourful vegetables & rich tomato sauce', variants: PIZZA_CLASSIC },
+          { name: 'Fajita', desc: 'Red pizza sauce, onion, ch. fajita, cheese & capsicum', variants: PIZZA_CLASSIC },
+          { name: 'Fajita Sicilian', desc: 'Red pizza sauce, onion, combination chicken, cheese, jalapeno & capsicum', variants: PIZZA_CLASSIC },
+          { name: 'Cheese Deluxe', desc: 'Red pizza sauce, cheese & lots of cheese', variants: PIZZA_CLASSIC },
+          { name: 'Royal Pepperoni (Chicken / Beef)', desc: 'Red pizza sauce, mozzarella cheese, pepperoni', variants: PIZZA_CLASSIC },
+        ],
+      },
+      {
+        title: 'Premiums — R 1250 · L 2100 · XL 2600',
+        items: [
+          { name: 'Super Supreme', desc: 'Red pizza sauce, onion, special combination chicken, cheese, ch. sausages, black olives, capsicum & white sauce', variants: PIZZA_PREMIUM },
+          { name: 'Afghani Malai Boti', desc: 'Afghani white pizza sauce, onion, afghani malai chicken, cheese & white sauce', variants: PIZZA_PREMIUM },
+          { name: 'Starlight Crust', desc: 'Red pizza sauce, special combination chicken in crown, lots of cheese, onion, capsicum, black olives & white sauce', variants: PIZZA_PREMIUM },
+          { name: 'Peri Peri Spicy', desc: 'Hot pizza sauce, onion, tomato, special tandoori chicken, lots of cheese, capsicum, jalapeno & peri peri sauce', variants: PIZZA_PREMIUM },
+        ],
+      },
+      {
+        title: 'Signatures — Large Only · Rs. 2200',
+        items: [
+          { name: 'Stuffed Crust on Choice', desc: 'Kabab · cheese · special sauce — tikka ‘n’ fajita, mushroom, capsicum, black olive & special sauce', variants: PIZZA_SIGNATURE },
+          { name: 'Behari Kabab', desc: 'Red ‘n’ white sauce, onion, spicy ch. chunks, behari seekh kabab, jalapeno, cheese, capsicum & white sauce', variants: PIZZA_SIGNATURE },
+          { name: 'Lazania Hot & Cheesy', desc: 'Hot pizza sauce, onion, tomato, special tandoori chicken, lots of cheese, capsicum & sauce combo', variants: PIZZA_SIGNATURE },
+          { name: 'Splitza (2 in 1)', desc: 'Combination of any two flavours of your choice', variants: PIZZA_SIGNATURE },
+        ],
+      },
+    ],
+    note: 'Extra Toppings (Cheese & Chicken) — S 80 · M 100 · L 120 · XL 150',
   },
   {
     id: 'sandwiches',
@@ -182,10 +228,41 @@ export const categories = [
   },
   {
     id: 'fries',
-    name: 'More Than Fries',
+    name: 'Fries Frenzy',
     emoji: '🍟',
     banner: img('fries.jpg'),
-    items: [],
-    comingSoon: 'Loaded fries line-up coming soon — send us your fries prices to complete this signature section.',
+    wide: true,
+    pill: 'More Than Fries',
+    groups: [
+      {
+        title: 'Classic Fries',
+        items: [
+          { name: 'Plain Fries', price: 230 },
+          { name: 'Masala Fries', price: 250 },
+          { name: 'Peri Peri Masala Fries', price: 250 },
+          { name: 'Jalapeno Masala Fries', price: 250 },
+        ],
+      },
+      {
+        title: 'Hi-Fries Special',
+        items: [
+          { name: 'Peri Peri ‘N’ Chipotle Fries', desc: 'Crispy golden fries topped with peri peri thousand sauce, jalapeno & chicken tikka', variants: [{ label: 'L', price: 550 }] },
+          { name: 'Oven Baked Loaded Fries', desc: 'Fries, special ch., pizza cheese, sausages, capsicum & topped with thousand & bbq sauce', variants: [{ label: 'S', price: 400 }, { label: 'L', price: 650 }] },
+          { name: 'Crunchy Loaded Fries', desc: 'Crispy golden fries, crispy chicken thai, pop jalapeno & topped with bbq thousand sauce', variants: [{ label: 'L', price: 650 }] },
+        ],
+      },
+      {
+        title: 'Dip Sauce · Rs. 70 each',
+        items: [
+          { name: 'Mayo Dip', price: 70 },
+          { name: 'Chipotle Dip', price: 70 },
+          { name: 'Special White Dip', price: 70 },
+          { name: 'BBQ Dip', price: 70 },
+          { name: 'Thousand Dip', price: 70 },
+          { name: 'Peri Peri Dip', price: 70 },
+        ],
+      },
+    ],
+    note: 'Extra Toppings — S 80 · M 100 · L 120 · XL 150',
   },
 ]

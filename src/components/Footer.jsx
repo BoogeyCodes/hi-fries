@@ -20,6 +20,11 @@ export default function Footer() {
           <Ci icon="📞" k="UAN" v={<a href={`tel:${brand.uanRaw}`} className="hover:text-hf-honey">{brand.uan}</a>} />
           <Ci icon="💬" k="WhatsApp" v={<a href={`https://wa.me/${brand.whatsapp}`} target="_blank" rel="noreferrer" className="hover:text-hf-honey">{brand.whatsappDisplay}</a>} />
           <Ci icon="📍" k="Location" v={brand.address} />
+          <Ci
+            icon="🌐"
+            k="Website"
+            v={<a href={`https://${brand.website}`} target="_blank" rel="noreferrer" className="hover:text-hf-honey">{brand.website}</a>}
+          />
         </div>
 
         <div>

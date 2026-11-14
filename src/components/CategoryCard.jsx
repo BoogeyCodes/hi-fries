@@ -37,9 +37,11 @@ export default function CategoryCard({ cat }) {
               <div className="mb-2 mt-3 border-b border-hf-orange/20 pb-1.5 font-display text-sm uppercase tracking-wide text-hf-honey">
                 {g.title}
               </div>
-              {g.items.map((it) => (
-                <Row key={it.name} item={it} onAdd={addItem} grid={cat.wide} />
-              ))}
+              <div className={cat.wide ? 'grid grid-cols-1 gap-x-8 sm:grid-cols-2' : ''}>
+                {g.items.map((it) => (
+                  <Row key={it.name} item={it} onAdd={addItem} />
+                ))}
+              </div>
             </div>
           ))
         ) : (

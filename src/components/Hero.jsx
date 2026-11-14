@@ -1,7 +1,7 @@
 const BASE = import.meta.env.BASE_URL
 
 const stats = [
-  { n: '30+', s: 'Menu Items' },
+  { n: '45+', s: 'Menu Items' },
   { n: '4', s: 'Combo Deals' },
   { n: '930', s: 'Deals From Rs.' },
 ]
