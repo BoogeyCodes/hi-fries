@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.6rem;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-hf-bg font-body text-hf-cream antialiased;
+    overflow-x: hidden;
+  }
+  /* warm ambient glow + grain behind everything */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background:
+      radial-gradient(1100px 700px at 82% -8%, rgba(255, 126, 26, 0.2), transparent 55%),
+      radial-gradient(900px 600px at -5% 108%, rgba(255, 77, 45, 0.14), transparent 55%),
+      #0e0a05;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+}
+
+@layer components {
+  .hf-btn {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-br from-hf-honey to-hf-orange px-7 py-3.5 font-display uppercase tracking-wide text-[#1b0e00] shadow-lg shadow-hf-orange/50 transition-transform duration-200 hover:-translate-y-0.5;
+  }
+  .hf-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-hf-orange/25 px-6 py-3 font-display uppercase tracking-wide text-hf-cream transition-colors duration-200 hover:border-hf-honey hover:text-hf-honey;
+  }
+  .hf-sheen {
+    @apply pointer-events-none absolute left-0 top-0 h-full w-2/5 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shine;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

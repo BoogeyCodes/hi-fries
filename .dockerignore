@@ -1,0 +1,10 @@
+node_modules
+dist
+.git
+*.log
+.DS_Store
+stock
+stock_candidates
+_styles
+_previews
+design-premium.html
