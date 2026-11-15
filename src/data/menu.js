@@ -13,6 +13,26 @@ export const brand = {
 
 export const fmtPrice = (n) => 'Rs. ' + Number(n).toLocaleString('en-PK')
 
+// ===== BRANCHES (order routing) =====
+export const branches = [
+  {
+    id: 'parkview',
+    name: 'Park View City',
+    city: 'Lahore',
+    phone: '0311 111 5454',
+    whatsapp: '923111115454',
+    emoji: '🌳',
+  },
+  {
+    id: 'jubilee',
+    name: 'Jubilee Town',
+    city: 'Lahore',
+    phone: '0316 666 5454',
+    whatsapp: '923166665454',
+    emoji: '🏙️',
+  },
+]
+
 // image helper paths are relative; prefix with import.meta.env.BASE_URL when rendering
 const img = (name) => 'images/food/' + name
 

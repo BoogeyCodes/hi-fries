@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useCart } from '../context/CartContext.jsx'
-import { brand, fmtPrice } from '../data/menu.js'
+import { fmtPrice } from '../data/menu.js'
+import CheckoutModal from './CheckoutModal.jsx'
 
 export default function Cart() {
   const { items, count, total, inc, dec, remove, clear } = useCart()
   const [open, setOpen] = useState(false)
   const [orderNote, setOrderNote] = useState('')
+  const [checkoutOpen, setCheckoutOpen] = useState(false)
 
   // Lock background page scroll while the cart drawer is open
   useEffect(() => {
@@ -16,19 +18,6 @@ export default function Cart() {
       document.body.style.overflow = prev
     }
   }, [open])
-
-  const checkout = () => {
-    const lines = items.map((i) => {
-      let b = `• ${i.qty} × ${i.name} — ${fmtPrice(i.qty * i.price)}`
-      if (i.addons?.length) b += `%0A    ➕ ${i.addons.map((a) => a.name).join(', ')}`
-      if (i.note) b += `%0A    📝 ${encodeURIComponent(i.note)}`
-      return b
-    })
-    let msg = `*New Order — Hi Fries*%0A%0A` + lines.join('%0A') + `%0A%0A*Total: ${fmtPrice(total)}*`
-    if (orderNote.trim()) msg += `%0A%0A*Order note:* ${encodeURIComponent(orderNote.trim())}`
-    msg += `%0A%0AName:%0AAddress:%0A`
-    window.open(`https://wa.me/${brand.whatsapp}?text=${msg}`, '_blank')
-  }
 
   return (
     <>
@@ -155,7 +144,7 @@ export default function Cart() {
             </div>
             <button
               type="button"
-              onClick={checkout}
+              onClick={() => setCheckoutOpen(true)}
               className="flex w-full items-center justify-center gap-2.5 rounded-full bg-[#25D366] px-6 py-3.5 font-display uppercase tracking-wide text-white shadow-lg transition hover:brightness-105"
             >
               <WhatsApp /> Order on WhatsApp
@@ -173,6 +162,14 @@ export default function Cart() {
           </footer>
         )}
       </aside>
+
+      <CheckoutModal
+        open={checkoutOpen}
+        onClose={() => setCheckoutOpen(false)}
+        items={items}
+        total={total}
+        orderNote={orderNote}
+      />
     </>
   )
 }

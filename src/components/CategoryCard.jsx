@@ -1,4 +1,5 @@
 import { useItemModal } from '../context/ModalContext.jsx'
+import Tilt from './Tilt.jsx'
 
 const BASE = import.meta.env.BASE_URL
 
@@ -12,7 +13,8 @@ export default function CategoryCard({ cat }) {
   }
 
   return (
-    <article className={`overflow-hidden rounded-[22px] border border-hf-orange/20 bg-[linear-gradient(175deg,#1b140c,#0c0905)] transition duration-300 hover:-translate-y-1 hover:border-hf-honey/45 ${cat.wide ? 'lg:col-span-2' : ''}`}>
+    <Tilt max={8} scale={1.01} className="relative h-full rounded-[22px]">
+    <article className="h-full overflow-hidden rounded-[22px] border border-hf-orange/20 bg-[linear-gradient(175deg,#1b140c,#0c0905)] transition duration-300 hover:border-hf-honey/45">
       <div className={`relative overflow-hidden ${cat.wide ? 'aspect-[40/9]' : 'aspect-[21/8]'}`}>
         <img src={BASE + cat.banner} alt={cat.name} className="h-full w-full object-cover transition-transform duration-500 hover:scale-105" />
         <div className="absolute inset-x-0 bottom-0 flex items-center gap-3 bg-gradient-to-t from-hf-bg/90 to-transparent px-5 py-3.5">
@@ -59,6 +61,7 @@ export default function CategoryCard({ cat }) {
         )}
       </div>
     </article>
+    </Tilt>
   )
 }
 

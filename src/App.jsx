@@ -8,11 +8,13 @@ import Menu from './components/Menu.jsx'
 import Footer from './components/Footer.jsx'
 import Cart from './components/Cart.jsx'
 import BackToTop from './components/BackToTop.jsx'
+import Starfield from './components/Starfield.jsx'
 
 export default function App() {
   return (
     <CartProvider>
       <ModalProvider>
+        <Starfield />
         <div className="min-h-screen">
           <Navbar />
           <main>

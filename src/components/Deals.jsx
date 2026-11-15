@@ -1,5 +1,6 @@
 import SectionHead from './SectionHead.jsx'
 import Reveal from './Reveal.jsx'
+import Tilt from './Tilt.jsx'
 import { deals } from '../data/menu.js'
 import { useItemModal } from '../context/ModalContext.jsx'
 
@@ -21,7 +22,8 @@ export default function Deals() {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {deals.map((d, i) => (
             <Reveal key={d.id} delay={(i % 4) * 80}>
-              <article className="group relative flex min-h-[340px] overflow-hidden rounded-[22px] border border-hf-orange/20 shadow-2xl shadow-black/60 transition duration-300 hover:-translate-y-2 hover:border-hf-honey/60">
+              <Tilt max={14} scale={1.03} glare className="relative h-full rounded-[22px]">
+              <article className="group relative flex min-h-[340px] w-full overflow-hidden rounded-[22px] border border-hf-orange/20 shadow-2xl shadow-black/60 transition duration-300 hover:border-hf-honey/60">
                 <img
                   src={BASE + d.img}
                   alt=""
@@ -55,6 +57,7 @@ export default function Deals() {
                   </div>
                 </div>
               </article>
+              </Tilt>
             </Reveal>
           ))}
         </div>

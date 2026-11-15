@@ -1,3 +1,5 @@
+import Tilt from './Tilt.jsx'
+
 const BASE = import.meta.env.BASE_URL
 
 const stats = [
@@ -44,22 +46,27 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="relative grid min-h-[340px] place-items-center">
+        <div className="relative grid min-h-[360px] place-items-center" style={{ perspective: '1000px' }}>
           <div className="absolute aspect-square w-[82%] animate-glow rounded-full bg-[radial-gradient(circle,#ff7e1a,transparent_68%)] blur-[46px] opacity-60" />
-          <div className="absolute right-[-2%] top-[4%] z-[3] grid h-24 w-24 animate-spinbadge place-items-center rounded-full bg-hf-ember text-center leading-[0.85] text-white shadow-[0_14px_34px_-8px_rgba(255,77,45,.85)]">
-            <span>
-              <b className="block font-display text-2xl">930</b>
-              <small className="text-[0.6rem] tracking-[0.1em]">FROM RS.</small>
-            </span>
-          </div>
-          <div className="relative z-[1] aspect-[3/4] w-[min(400px,86%)] animate-floaty overflow-hidden rounded-[26px] border-[3px] border-hf-honey/55 shadow-[0_44px_90px_-34px_#000,0_0_0_8px_rgba(255,126,26,.08)]">
-            <span className="hf-sheen z-[2]" />
-            <img
-              src={BASE + 'images/food/hero.jpg'}
-              alt="Loaded Hi Fries stacked burger"
-              className="h-full w-full object-cover"
-            />
-          </div>
+          <Tilt max={20} scale={1.03} className="relative z-[1] w-[min(400px,86%)]">
+            <div className="animate-floaty relative aspect-[3/4] overflow-hidden rounded-[26px] border-[3px] border-hf-honey/55 shadow-[0_44px_90px_-34px_#000,0_0_0_8px_rgba(255,126,26,.08)]">
+              <span className="hf-sheen z-[2]" />
+              <img
+                src={BASE + 'images/food/hero.jpg'}
+                alt="Loaded Hi Fries stacked burger"
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div
+              className="absolute right-[-6%] top-[2%] z-[6] grid h-24 w-24 place-items-center rounded-full bg-hf-ember text-center leading-[0.85] text-white shadow-[0_18px_40px_-8px_rgba(255,77,45,.9)]"
+              style={{ transform: 'translateZ(70px)' }}
+            >
+              <span>
+                <b className="block font-display text-2xl">930</b>
+                <small className="text-[0.6rem] tracking-[0.1em]">FROM RS.</small>
+              </span>
+            </div>
+          </Tilt>
         </div>
       </div>
     </section>
